@@ -3,7 +3,7 @@ import {io} from "socket.io-client";
 import Peer from "simple-peer";
 
 const SocketContext = createContext();
-
+// process.env is setting from vercel
 const socketEndpoint = process.env.SOCKET_ENDPOINT || "http://localhost:3000";
 const socket = io(socketEndpoint);
 
