@@ -6,7 +6,7 @@ const SocketContext = createContext();
 // process.env is setting from vercel
 // const socketEndpoint = "http://localhost:3000";
 const socketEndpoint =
-  "https://back-end-video-chat-with-webrtc-and-websocket.vercel.app/";
+  "https://back-end-video-chat-with-webrtc-and-websocket.vercel.app";
 const socket = io(socketEndpoint);
 
 function SocketContextProvider({children}) {
