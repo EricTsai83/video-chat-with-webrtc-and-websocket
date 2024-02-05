@@ -30,9 +30,6 @@ export default function Options({children}) {
       marginTop: "30px",
       display: "flex",
       justifyContent: "center",
-      [theme.breakpoints.down("sm")]: {
-        width: "80%",
-      },
     },
     flexBox: {
       display: "flex",
@@ -52,7 +49,7 @@ export default function Options({children}) {
       padding: "20px",
       borderRadius: "12px",
       [theme.breakpoints.down("sm")]: {
-        width: "80%",
+        width: "90%",
       },
     },
   };

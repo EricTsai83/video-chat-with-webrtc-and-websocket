@@ -15,9 +15,6 @@ export default function VideoPlayer() {
       display: "flex",
       gap: "10px",
       justifyContent: "center",
-      [theme.breakpoints.down("sm")]: {
-        width: "80%",
-      },
     },
     paper: {
       width: "100%",
@@ -25,7 +22,7 @@ export default function VideoPlayer() {
       padding: "20px",
       borderRadius: "12px",
       [theme.breakpoints.down("sm")]: {
-        width: "80%",
+        width: "90%",
       },
     },
     cardMedia: {
