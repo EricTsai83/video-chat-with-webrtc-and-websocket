@@ -11,9 +11,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("Running");
-});
+// app.get("/", (req, res) => {
+//   res.send("Running");
+// });
 
 io.on("connection", (socket) => {
   // server will give front-end a specific id
