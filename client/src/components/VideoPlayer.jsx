@@ -49,7 +49,7 @@ export default function VideoPlayer() {
       {callAccepted && !callEnded && (
         <Paper sx={styles.paper}>
           <Typography variant="h5" gutterBottom>
-            {call.name || "Name"}
+            {call.name || "Anonymous"}
           </Typography>
           <CardMedia
             component="video"
