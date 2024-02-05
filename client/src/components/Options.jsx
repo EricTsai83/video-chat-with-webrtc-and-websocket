@@ -8,15 +8,19 @@ import {
   FormControl,
   FormLabel,
 } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
 import {CopyToClipboard} from "react-copy-to-clipboard";
 import {Assignment, Phone, PhoneDisabled} from "@mui/icons-material";
 import {useTheme} from "@mui/material/styles";
 import {SocketContext} from "../context/SocketContext";
+import Snackbar from "@mui/material/Snackbar";
 
 export default function Options({children}) {
   const {me, callAccepted, name, setName, callEnded, leaveCall, callUser} =
     useContext(SocketContext);
   const [idToCall, setIdToCall] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const theme = useTheme();
 
@@ -94,25 +98,43 @@ export default function Options({children}) {
                 color="secondary"
                 startIcon={<PhoneDisabled fontSize="large" />}
                 fullWidth
-                onClick={leaveCall}
+                onClick={() => {
+                  leaveCall();
+                  setLoading(false);
+                }}
                 sx={styles.margin}>
                 Hang Up
               </Button>
             ) : (
-              <Button
+              <LoadingButton
                 variant="contained"
                 color="primary"
+                loading={loading}
+                loadingPosition="start"
                 startIcon={<Phone fontSize="large" />}
                 fullWidth
-                onClick={() => callUser(idToCall)}
+                onClick={() => {
+                  if (idToCall) {
+                    callUser(idToCall);
+                    setLoading(true);
+                  } else {
+                    setOpen(true);
+                  }
+                }}
                 sx={styles.margin}>
-                Call
-              </Button>
+                {loading ? <span>Calling...</span> : <span>Call</span>}
+              </LoadingButton>
             )}
           </FormControl>
         </Box>
         {children}
       </Paper>
+      <Snackbar
+        anchorOrigin={{vertical: "bottom", horizontal: "right"}}
+        open={open}
+        onClose={() => setOpen(false)}
+        message="Please enter your ID and then call again."
+      />
     </Container>
   );
 }

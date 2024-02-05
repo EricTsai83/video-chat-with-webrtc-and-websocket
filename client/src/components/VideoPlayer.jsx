@@ -13,6 +13,7 @@ export default function VideoPlayer() {
       width: "100%",
       marginTop: "30px",
       display: "flex",
+      gap: "10px",
       justifyContent: "center",
       [theme.breakpoints.down("sm")]: {
         width: "80%",
