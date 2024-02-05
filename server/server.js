@@ -1,21 +1,28 @@
-const app = require("express")();
-const server = require("http").createServer(app);
+// initialize express APP
+const express = require("express");
+const app = express();
+
+// load .env
+const dotenv = require("dotenv");
+dotenv.config();
+
 const cors = require("cors");
-const path = require("path");
+app.use(cors());
+
+// create websocket server
+const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
   },
 });
+
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
-
 // --------------------------deployment------------------------------
-
+const path = require("path");
 const __dirname1 = path.resolve();
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname1, "/client/dist")));
 
