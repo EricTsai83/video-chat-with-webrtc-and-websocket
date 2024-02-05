@@ -1,6 +1,7 @@
 const app = require("express")();
 const server = require("http").createServer(app);
 const cors = require("cors");
+const path = require("path");
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
@@ -11,9 +12,23 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
-// app.get("/", (req, res) => {
-//   res.send("Running");
-// });
+// --------------------------deployment------------------------------
+
+const __dirname1 = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "/client/dist")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname1, "frontend", "dist", "index.html")),
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running..");
+  });
+}
+
+// --------------------------deployment------------------------------
 
 io.on("connection", (socket) => {
   // server will give front-end a specific id
