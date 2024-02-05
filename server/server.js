@@ -23,6 +23,7 @@ const PORT = process.env.PORT || 3000;
 // --------------------------deployment------------------------------
 const path = require("path");
 const __dirname1 = path.resolve();
+console.log(__dirname1);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname1, "/client/dist")));
 
