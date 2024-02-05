@@ -130,7 +130,7 @@ export default function Options({children}) {
         anchorOrigin={{vertical: "bottom", horizontal: "right"}}
         open={open}
         onClose={() => setOpen(false)}
-        message="Please enter your ID and then call again."
+        message="Please enter ID and then call again."
       />
     </Container>
   );
