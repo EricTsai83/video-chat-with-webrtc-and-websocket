@@ -3,10 +3,7 @@ import {io} from "socket.io-client";
 import Peer from "simple-peer";
 
 const SocketContext = createContext();
-// process.env is setting from vercel
-// const socketEndpoint = "http://localhost:3000";
-const socketEndpoint =
-  "https://back-end-video-chat-with-webrtc-and.onrender.com";
+const socketEndpoint = "http://localhost:3000";
 const socket = io(socketEndpoint);
 
 function SocketContextProvider({children}) {
