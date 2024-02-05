@@ -33,11 +33,10 @@ export default function Options({children}) {
     flexBox: {
       display: "flex",
       justifyContent: "center",
-      gap: 5,
+      gap: 6,
       width: "100%",
       [theme.breakpoints.down("sm")]: {
         flexDirection: "column",
-        minWidth: "260px",
       },
     },
     margin: {
@@ -46,11 +45,10 @@ export default function Options({children}) {
     paper: {
       width: "100%",
       maxWidth: "600px",
-      padding: "10px 20px",
-      border: "2px solid black",
+      padding: "20px",
+      borderRadius: "12px",
       [theme.breakpoints.down("sm")]: {
         width: "80%",
-        minWidth: "260px",
       },
     },
   };
@@ -59,7 +57,7 @@ export default function Options({children}) {
     <Container sx={styles.container}>
       <Paper elevation={10} sx={styles.paper}>
         <Box sx={styles.flexBox}>
-          <FormControl>
+          <FormControl sx={{width: "100%"}}>
             <FormLabel>Account Info</FormLabel>
             <TextField
               label="Enter your name"
@@ -80,7 +78,7 @@ export default function Options({children}) {
             </CopyToClipboard>
           </FormControl>
 
-          <FormControl>
+          <FormControl sx={{width: "100%"}}>
             <FormLabel>Make a call</FormLabel>
             <TextField
               label="ID to call"

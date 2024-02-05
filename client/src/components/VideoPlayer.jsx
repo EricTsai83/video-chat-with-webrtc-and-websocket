@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import {Box, Typography, Paper, CardMedia} from "@mui/material";
+import {Container, Typography, Paper, CardMedia} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import {SocketContext} from "../context/SocketContext";
 
@@ -9,32 +9,35 @@ export default function VideoPlayer() {
     useContext(SocketContext);
 
   const styles = {
-    flexBox: {
-      marginTop: "20px",
+    container: {
       width: "100%",
+      marginTop: "30px",
       display: "flex",
       justifyContent: "center",
+      [theme.breakpoints.down("sm")]: {
+        width: "80%",
+      },
     },
     paper: {
       width: "100%",
       maxWidth: "600px",
-      padding: "10px",
-      border: "2px solid black",
+      padding: "20px",
+      borderRadius: "12px",
       [theme.breakpoints.down("sm")]: {
         width: "80%",
-        minWidth: "260px",
       },
     },
     cardMedia: {
       width: "100%",
+      borderRadius: "12px",
     },
   };
 
   return (
-    <Box sx={styles.flexBox}>
+    <Container sx={styles.container}>
       <Paper sx={styles.paper}>
-        <Typography variant="h5" gutterBottom>
-          {name || "Name"}
+        <Typography variant="h6" gutterBottom>
+          {name || "Anonymous"}
         </Typography>
         <CardMedia
           component="video"
@@ -59,6 +62,6 @@ export default function VideoPlayer() {
           />
         </Paper>
       )}
-    </Box>
+    </Container>
   );
 }
