@@ -23,12 +23,13 @@ const PORT = process.env.PORT || 3000;
 // --------------------------deployment------------------------------
 const path = require("path");
 const __dirname1 = path.resolve();
-console.log(__dirname1);
+
 if (process.env.NODE_ENV === "production") {
+  console.log(process.env.NODE_ENV);
   app.use(express.static(path.join(__dirname1, "/client/dist")));
 
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname1, "/client", "/dist", "index.html")),
+    res.sendFile(path.resolve(__dirname1, "client", "dist", "index.html")),
   );
 } else {
   app.get("/", (req, res) => {
