@@ -3,7 +3,9 @@ import {io} from "socket.io-client";
 import Peer from "simple-peer";
 
 const SocketContext = createContext();
-const socketEndpoint = "http://localhost:3000";
+// const socketEndpoint = "http://localhost:3000";
+const socketEndpoint =
+  "https://video-chat-with-webrtc-and-websocket.onrender.com";
 const socket = io(socketEndpoint);
 
 function SocketContextProvider({children}) {
