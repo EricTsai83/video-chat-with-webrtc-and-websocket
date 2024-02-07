@@ -19,13 +19,16 @@ function SocketContextProvider({children}) {
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
+  const videoConstraints = {advanced: [{width: 640, height: 480}]};
 
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({video: true, audio: true})
       .then((currentStream) => {
-        setStream(currentStream);
-        if (myVideo.current) myVideo.current.srcObject = currentStream;
+        if (myVideo.current) {
+          setStream(currentStream);
+          myVideo.current.srcObject = currentStream;
+        }
       });
 
     socket.on("me", (id) => setMe(id));
