@@ -33,19 +33,21 @@ export default function VideoPlayer() {
 
   return (
     <Container sx={styles.container}>
-      <Paper sx={styles.paper}>
-        <Typography variant="h6" gutterBottom>
-          {name || "Anonymous"}
-        </Typography>
-        <CardMedia
-          component="video"
-          playsInline
-          muted
-          ref={myVideo}
-          autoPlay
-          sx={styles.cardMedia}
-        />
-      </Paper>
+      {stream && (
+        <Paper sx={styles.paper}>
+          <Typography variant="h6" gutterBottom>
+            {name || "Anonymous"}
+          </Typography>
+          <CardMedia
+            component="video"
+            playsInline
+            muted
+            ref={myVideo}
+            autoPlay
+            sx={styles.cardMedia}
+          />
+        </Paper>
+      )}
       {callAccepted && !callEnded && (
         <Paper sx={styles.paper}>
           <Typography variant="h5" gutterBottom>
