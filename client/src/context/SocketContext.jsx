@@ -25,8 +25,8 @@ function SocketContextProvider({children}) {
     navigator.mediaDevices
       .getUserMedia({video: true, audio: true})
       .then((currentStream) => {
+        setStream(currentStream);
         if (myVideo.current) {
-          setStream(currentStream);
           myVideo.current.srcObject = currentStream;
         }
       });
