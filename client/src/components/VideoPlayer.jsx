@@ -5,7 +5,7 @@ import {SocketContext} from "../context/SocketContext";
 
 export default function VideoPlayer() {
   const theme = useTheme();
-  const {name, callAccepted, myVideo, userVideo, callEnded, stream, call} =
+  const {name, callAccepted, myVideo, userVideo, callEnded, call} =
     useContext(SocketContext);
 
   const styles = {
@@ -32,7 +32,6 @@ export default function VideoPlayer() {
   };
 
   return (
-    // 自己的畫面
     <Container sx={styles.container}>
       <Paper sx={styles.paper}>
         <Typography variant="h6" gutterBottom>
@@ -47,7 +46,6 @@ export default function VideoPlayer() {
           sx={styles.cardMedia}
         />
       </Paper>
-
       {callAccepted && !callEnded && (
         <Paper sx={styles.paper}>
           <Typography variant="h5" gutterBottom>

@@ -19,7 +19,6 @@ function SocketContextProvider({children}) {
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
-  const videoConstraints = {advanced: [{width: 640, height: 480}]};
 
   useEffect(() => {
     navigator.mediaDevices
